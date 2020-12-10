@@ -10,6 +10,9 @@ namespace DAL.Entities
         [ForeignKey("Doctor")]
         public int DoctorId { get; set; }
         public Doctor Doctor { get; set; }
+        [ForeignKey("Day")]
+        public int DayId { get; set; }
+        public Day Day { get; set; }
         public DateTime StartTime { get; set; }
         public DateTime EndTime { get; set; }
     }
