@@ -14,8 +14,8 @@ namespace DAL.Entities
         public string PhoneNumber { get; set; } 
         public int Cabinet { get; set; }
 
-        public List<DoctorSchedule> Schedules { get; set; }
-        public List<Visit> Visits { get; set; }
-        public List<Appointment> Appointments { get; set; }
+        public IEnumerable<DoctorSchedule> Schedules { get; set; }
+        public IEnumerable<Visit> Visits { get; set; }
+        public IEnumerable<Appointment> Appointments { get; set; }
     }
 }

@@ -11,5 +11,8 @@ namespace DAL.Entities
         public string Patronymic { get; set; }
         public DateTime BirthDate { get; set; }
         public string PhoneNumber { get; set; }
+
+        public IEnumerable<Appointment> Appointments { get; set; }
+        public IEnumerable<Visit> Visits { get; set; }
     }
 }
