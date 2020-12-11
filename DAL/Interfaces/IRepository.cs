@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    public interface IRepository<TEntity> where TEntity : class
+    public interface IRepository<TEntity> : IDisposable where TEntity : class
     {
         void Delete(TEntity entity);
         TEntity Update(TEntity entity);
@@ -28,6 +28,5 @@ namespace DAL.Interfaces
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate, string includeProperties = "");
         void Save();
         Task SaveAsync();
-        void Dispose();
     }
 }

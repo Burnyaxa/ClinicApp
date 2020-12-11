@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace DAL.Repositories
 {
-    public class Repository<TEntity> : IRepository<TEntity>, IDisposable where TEntity : class, IEntity<int>
+    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, IEntity<int>
     {
         private bool _disposed = false;
         private DbContext _context;
