@@ -8,11 +8,11 @@ namespace DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<Appointment> Appointments { get; }
-        IRepository<Doctor> Doctors { get; }
-        IRepository<DoctorSchedule> DoctorSchedules { get; }
-        IRepository<Patient> Patients { get; }
-        IRepository<Visit> Visits { get; }
+        IRepository<Appointment> AppointmentRepository { get; }
+        IRepository<Doctor> DoctorRepository { get; }
+        IRepository<DoctorSchedule> DoctorScheduleRepository { get; }
+        IRepository<Patient> PatientRepository { get; }
+        IRepository<Visit> VisitRepository { get; }
 
         void Save();
         Task SaveAsync();
