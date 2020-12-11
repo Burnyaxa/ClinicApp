@@ -1,10 +1,11 @@
-﻿using System;
+﻿using DAL.Entities.Entity;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace DAL.Entities
 {
-    public class Patient
+    public class Patient : Entity<int>
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }

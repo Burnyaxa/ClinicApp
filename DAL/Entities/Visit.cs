@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Text;
 namespace DAL.Entities
 {
    
-    public class Visit
+    public class Visit : Entity<int>
     {
         [ForeignKey("Patient")]
         public int PatientId { get; set; }

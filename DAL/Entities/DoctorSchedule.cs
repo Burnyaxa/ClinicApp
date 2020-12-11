@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -17,7 +18,7 @@ namespace DAL.Entities
         Sunday
     }
 
-    public class DoctorSchedule
+    public class DoctorSchedule : Entity<int>
     {
         [ForeignKey("Doctor")]
         public int DoctorId { get; set; }

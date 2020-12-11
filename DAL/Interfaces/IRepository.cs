@@ -13,7 +13,7 @@ namespace DAL.Interfaces
         TEntity Update(TEntity entity);
         TEntity Insert(TEntity entity);
         TEntity GetById(int id, string includeProperties = "");
-        Task<TEntity> GetByIdAsync(int id, string incldeProperties = "");
+        Task<TEntity> GetByIdAsync(int id, string includeProperties = "");
         IQueryable<TEntity> GetAllIncluding(string includeProperties = "");
         IQueryable<TEntity> GetAllQueryable();
         IEnumerable<TEntity> GetAll(string includeProperties = "");
@@ -26,6 +26,8 @@ namespace DAL.Interfaces
         Task<TEntity> FirstOrDefaultAsync(int id, string includeProperties = "");
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, string includeProperties = "");
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate, string includeProperties = "");
+        void Save();
+        Task SaveAsync();
         void Dispose();
     }
 }

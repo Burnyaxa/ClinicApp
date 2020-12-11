@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DAL.Entities.Entity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +15,7 @@ namespace DAL.Entities
         Delayed
     }
 
-    public class Appointment
+    public class Appointment : Entity<int>
     {
         [ForeignKey("Patient")]
         public int PatientId { get; set; }
