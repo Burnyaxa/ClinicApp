@@ -6,8 +6,15 @@ using System.Text;
 
 namespace DAL.Entities
 {
-   
-    public class Visit
+    public enum AppointmentStatus
+    {
+        Awaiting,
+        Completed,
+        Cancelled,
+        Delayed
+    }
+
+    class Appointment
     {
         [ForeignKey("Patient")]
         public int PatientId { get; set; }
@@ -16,7 +23,7 @@ namespace DAL.Entities
         public int DoctorId { get; set; }
         public Doctor Doctor { get; set; }
         public DateTime Date { get; set; }
-        public string Diagnosis { get; set; }
-        public string Note { get; set; }
+        [EnumDataType(typeof(AppointmentStatus))]
+        public AppointmentStatus Status { get; set; }
     }
 }
