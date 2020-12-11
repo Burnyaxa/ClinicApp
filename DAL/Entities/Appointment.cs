@@ -14,7 +14,7 @@ namespace DAL.Entities
         Delayed
     }
 
-    class Appointment
+    public class Appointment
     {
         [ForeignKey("Patient")]
         public int PatientId { get; set; }
