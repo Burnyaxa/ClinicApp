@@ -1,12 +1,13 @@
-﻿using System;
+﻿using DAL.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace BLL.DTO
 {
-    public class VisitDTO
+    public class AppointmentDTO
     {
-        public int Id { get; set; }
+        public string Id { get; set; }
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
 
@@ -21,7 +22,7 @@ namespace BLL.DTO
         public string DoctorSpecialty { get; set; }
 
         public DateTime Date { get; set; }
-        public string Diagnosis { get; set; }
-        public string Note { get; set; }
+        public AppointmentStatus Status { get; set; }
+
     }
 }

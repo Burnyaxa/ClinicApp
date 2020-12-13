@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BLL.DTO
 {
-    class PatientDTO
+    public class PatientDTO
     {
         public int Id { get; set; } 
         public string LastName { get; set; }
@@ -14,7 +14,7 @@ namespace BLL.DTO
         public string PhoneNumber { get; set; }
 
         IEnumerable<VisitDTO> Visits { get; set; }
-        IEnumerable<> Appointments { get; set; }
+        IEnumerable<AppointmentDTO> Appointments { get; set; }
 
 
     }
