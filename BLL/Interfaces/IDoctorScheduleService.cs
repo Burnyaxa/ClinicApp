@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.Interfaces
 {
-    public interface DoctorSchedule
+    public interface IDoctorScheduleService
     {
         Task<IEnumerable<DoctorScheduleDTO>> GetAllDoctorSchedules();
         Task<DoctorScheduleDTO> GetDoctorScheduleById(int id);
