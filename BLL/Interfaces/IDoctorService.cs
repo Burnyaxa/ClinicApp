@@ -10,8 +10,8 @@ namespace BLL.Interfaces
     {
         Task<IEnumerable<DoctorDTO>> GetAllDoctors();
         Task<DoctorDTO> GetDoctorById(int id);
-        Task<DoctorDTO> CreateDoctor(DoctorDTO patient);
-        Task<DoctorDTO> UpdateDoctor(int id, DoctorDTO patient);
+        Task<DoctorDTO> CreateDoctor(DoctorDTO doctor);
+        Task<DoctorDTO> UpdateDoctor(int id, DoctorDTO doctor);
         Task DeleteDoctor(int id);
     }
 }
