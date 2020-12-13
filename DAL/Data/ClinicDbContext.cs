@@ -21,7 +21,6 @@ namespace DAL.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
             modelBuilder.Entity<Doctor>()
                 .HasMany(x => x.Schedules)
                 .WithOne(x => x.Doctor)
@@ -56,6 +55,10 @@ namespace DAL.Data
                 .HasForeignKey(x => x.DoctorId)
                 .OnDelete(DeleteBehavior.Cascade)
                 .IsRequired();
+
+            modelBuilder.Entity<Appointment>()
+                .Property(x => x.Status)
+                .HasDefaultValue(AppointmentStatus.Awaiting);
         }
     }
 }
