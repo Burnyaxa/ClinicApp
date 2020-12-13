@@ -13,8 +13,8 @@ namespace BLL.DTO
         public DateTime BirthDate { get; set; }
         public string PhoneNumber { get; set; }
 
-        IEnumerable<VisitDTO> Visits { get; set; }
-        IEnumerable<AppointmentDTO> Appointments { get; set; }
+        public IEnumerable<VisitDTO> Visits { get; set; }
+        public IEnumerable<AppointmentDTO> Appointments { get; set; }
 
 
     }
