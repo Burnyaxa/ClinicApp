@@ -8,6 +8,6 @@ namespace BLL.Interfaces
 {
     public interface IAppointmentTimeService
     {
-        Task<IEnumerable<TimeSpan>> GetFreeHours(DoctorDTO doctorDTO);
+        Task<AppointmentFreeTimeDTO> GetFreeHours(DateTime date, int id);
     }
 }
