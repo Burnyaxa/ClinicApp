@@ -23,11 +23,9 @@ namespace DAL.Entities
         [ForeignKey("Doctor")]
         public int DoctorId { get; set; }
         public Doctor Doctor { get; set; }
-        [ForeignKey("Day")]
-        public int DayId { get; set; }
         [EnumDataType(typeof(Days))]
         public Days Day { get; set; }
-        public DateTime StartTime { get; set; }
-        public DateTime EndTime { get; set; }
+        public TimeSpan StartTime { get; set; }
+        public TimeSpan EndTime { get; set; }
     }
 }
