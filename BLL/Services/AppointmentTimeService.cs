@@ -26,9 +26,18 @@ namespace BLL.Services
         {
             List<TimeSpan> freeTime = new List<TimeSpan>();
             Doctor doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id);
+
+            IEnumerable<DoctorScheduleDTO> doctorSchedules = _mapper.Map<IEnumerable<DoctorSchedule>, IEnumerable<DoctorScheduleDTO>>(doctor.Schedules);
+            IEnumerable<AppointmentDTO> appointmentsDTO = _mapper.Map<IEnumerable<Appointment>, IEnumerable<AppointmentDTO>>(doctor.Appointments);
+
             string day = date.ToString("dddd");
-            DoctorSchedule doctorSchedule = doctor.Schedules.Where(x => x.Day.ToString() == day).FirstOrDefault();
-            IEnumerable<Appointment> appointments = doctor.Appointments.Where(x => x.Date.ToString("dd.MM.yyyy") == date.ToString("dd.MM.yyyy") && x.Status == AppointmentStatus.Awaiting);
+
+            DoctorScheduleDTO doctorSchedule = doctorSchedules.Where(x => x.Day.ToString() == day).FirstOrDefault();
+            IEnumerable<AppointmentDTO> appointments = appointmentsDTO.Where(x =>
+                x.Date.ToString("dd.MM.yyyy") ==
+                date.ToString("dd.MM.yyyy") &&
+                x.Status == AppointmentStatus.Awaiting);
+
             for(TimeSpan current = doctorSchedule.StartTime; current < doctorSchedule.EndTime.Subtract(_appointmentDuration); current = current.Add(_appointmentDuration))
             {
                 if(appointments.All(x => x.Date.ToString("h") != current.Hours.ToString() && x.Date.ToString("m") != current.Minutes.ToString()))
