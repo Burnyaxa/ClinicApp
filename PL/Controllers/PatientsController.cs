@@ -13,12 +13,12 @@ namespace PL.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PatientController : ControllerBase
+    public class PatientsController : ControllerBase
     {
         private readonly IMapper _mapper;
         private readonly IPatientService _patientService;
 
-        public PatientController(IMapper mapper, IPatientService patientService)
+        public PatientsController(IMapper mapper, IPatientService patientService)
         {
             _mapper = mapper;
             _patientService = patientService;
