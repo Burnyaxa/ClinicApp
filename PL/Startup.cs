@@ -5,6 +5,10 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using PL.Extensions;
+using AutoMapper;
+using BLL.Mapping;
+using PL.Mapping;
 
 namespace PL
 {
@@ -26,6 +30,10 @@ namespace PL
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddCors();
+            services.AddClinicDb(Configuration.GetConnectionString("DefaultConnection"));
+            services.Inject();
+            services.AddAutoMapper(typeof(MappingProfile), typeof(AppMappingProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,6 +57,10 @@ namespace PL
                 app.UseSpaStaticFiles();
             }
 
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
