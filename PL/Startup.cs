@@ -9,6 +9,7 @@ using PL.Extensions;
 using AutoMapper;
 using BLL.Mapping;
 using PL.Mapping;
+using PL.Middlewares;
 
 namespace PL
 {
@@ -61,6 +62,8 @@ namespace PL
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+
+            app.UseExceptionHandlerMiddleware();
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
