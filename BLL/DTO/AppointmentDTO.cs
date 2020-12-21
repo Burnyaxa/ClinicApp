@@ -7,7 +7,7 @@ namespace BLL.DTO
 {
     public class AppointmentDTO
     {
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
 
