@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PL.Models
 {
-    public class VIsitUpdateModel
+    public class VisitUpdateModel
     {
         [Required]
         public int PatientId { get; set; }
