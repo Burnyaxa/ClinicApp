@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using System.Linq;
+using BLL.Exceptions;
+
 namespace BLL.Services
 {
     public class AppointmentTimeService : IAppointmentTimeService
@@ -26,13 +28,16 @@ namespace BLL.Services
         {
             List<TimeSpan> freeTime = new List<TimeSpan>();
             Doctor doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id);
-
-            IEnumerable<DoctorScheduleDTO> doctorSchedules = _mapper.Map<IEnumerable<DoctorSchedule>, IEnumerable<DoctorScheduleDTO>>(doctor.Schedules);
+            if(doctor == null)
+            {
+                throw new EntityNotFoundException(nameof(doctor), id);
+            }
+            IEnumerable<DoctorScheduleDTO> doctorSchedulesDTO = _mapper.Map<IEnumerable<DoctorSchedule>, IEnumerable<DoctorScheduleDTO>>(doctor.Schedules);
             IEnumerable<AppointmentDTO> appointmentsDTO = _mapper.Map<IEnumerable<Appointment>, IEnumerable<AppointmentDTO>>(doctor.Appointments);
 
             string day = date.ToString("dddd");
 
-            DoctorScheduleDTO doctorSchedule = doctorSchedules.Where(x => x.Day.ToString() == day).FirstOrDefault();
+            DoctorScheduleDTO doctorSchedule = doctorSchedulesDTO.Where(x => x.Day.ToString() == day).FirstOrDefault();
             IEnumerable<AppointmentDTO> appointments = appointmentsDTO.Where(x =>
                 x.Date.ToString("dd.MM.yyyy") ==
                 date.ToString("dd.MM.yyyy") &&
@@ -45,6 +50,7 @@ namespace BLL.Services
                     freeTime.Add(current);
                 }
             }
+
             return new AppointmentFreeTimeDTO { Date = date, DoctorId = id, FreeTime = freeTime };
         }
     }
