@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.DTO;
+using BLL.Exceptions;
 using BLL.Interfaces;
 using DAL.Entities;
 using DAL.Interfaces;
@@ -32,24 +33,49 @@ namespace BLL.Services
         public async Task DeleteDoctorSchedule(int id)
         {
             var doctorSchedule = await _unitOfWork.DoctorScheduleRepository.GetByIdAsync(id);
+            if(doctorSchedule == null)
+            {
+                throw new EntityNotFoundException(nameof(doctorSchedule), id);
+            }
             _unitOfWork.DoctorScheduleRepository.Delete(doctorSchedule);
             await _unitOfWork.SaveAsync();
         }
 
         public async Task<IEnumerable<DoctorScheduleDTO>> GetAllDoctorSchedules()
         {
+            var doctorSchedule = await _unitOfWork.DoctorScheduleRepository.GetAllAsync();
+            if (doctorSchedule == null)
+            {
+                throw new EntityNotFoundException(nameof(doctorSchedule), 0);
+            }
             return _mapper.Map<IEnumerable<DoctorSchedule>, IEnumerable<DoctorScheduleDTO>>(await _unitOfWork.DoctorScheduleRepository.GetAllAsync());
         }
 
         public async Task<IEnumerable<DoctorScheduleDTO>> GetAllDoctorSchedulesByDoctorId(int id)
         {
+            var doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id);
+            if (doctor == null)
+            {
+                throw new EntityNotFoundException(nameof(doctor), id);
+            }
+
             var doctorSchedules = await _unitOfWork.DoctorScheduleRepository.GetAllAsync(x => x.DoctorId == id);
+            if (doctorSchedules == null)
+            {
+                throw new EntityNotFoundException(nameof(doctorSchedules), id);
+            }
+
             return _mapper.Map<IEnumerable<DoctorSchedule>, IEnumerable<DoctorScheduleDTO>>(doctorSchedules);
         }
 
         public async Task<DoctorScheduleDTO> GetDoctorScheduleById(int id)
         {
             var doctorSchedule = await _unitOfWork.DoctorScheduleRepository.GetByIdAsync(id);
+            if (doctorSchedule == null)
+            {
+                throw new EntityNotFoundException(nameof(doctorSchedule), id);
+            }
+
             var doctorScheduleDTO = _mapper.Map<DoctorScheduleDTO>(doctorSchedule);
             return doctorScheduleDTO;
         }
@@ -57,6 +83,10 @@ namespace BLL.Services
         public async Task<DoctorScheduleDTO> UpdateDoctorSchedule(int id, DoctorScheduleDTO doctorScheduleDTO)
         {
             var doctorSchedule = await _unitOfWork.DoctorScheduleRepository.GetByIdAsync(id);
+            if (doctorSchedule == null)
+            {
+                throw new EntityNotFoundException(nameof(doctorSchedule), id);
+            }
 
             doctorSchedule.DoctorId = doctorScheduleDTO.DoctorId;
             doctorSchedule.Day = doctorScheduleDTO.Day;

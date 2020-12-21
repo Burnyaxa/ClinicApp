@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BLL.DTO;
+using BLL.Exceptions;
 using BLL.Interfaces;
 using DAL.Entities;
 using DAL.Interfaces;
@@ -32,18 +33,33 @@ namespace BLL.Services
         public async Task DeleteDoctor(int id)
         {
             var doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id);
+            if (doctor == null)
+            {
+                throw new EntityNotFoundException(nameof(doctor), id);
+            }
+
             _unitOfWork.DoctorRepository.Delete(doctor);
             await _unitOfWork.SaveAsync();
         }
 
         public async Task<IEnumerable<DoctorDTO>> GetAllDoctors()
         {
-            return _mapper.Map<IEnumerable<Doctor>, IEnumerable<DoctorDTO>>(await _unitOfWork.DoctorRepository.GetAllAsync());
+            var doctors = await _unitOfWork.DoctorRepository.GetAllAsync();
+             if (doctors == null)
+            {
+                throw new EntityNotFoundException(nameof(doctors), 0);
+            }
+            return _mapper.Map<IEnumerable<Doctor>, IEnumerable<DoctorDTO>>(doctors);
         }
 
         public async Task<DoctorDTO> GetDoctorById(int id)
         {
             var doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id);
+            if (doctor == null)
+            {
+                throw new EntityNotFoundException(nameof(doctor), id);
+            }
+
             var doctorDTO = _mapper.Map<DoctorDTO>(doctor);
             return doctorDTO;
         }
@@ -51,6 +67,10 @@ namespace BLL.Services
         public async Task<DoctorDTO> UpdateDoctor(int id, DoctorDTO doctorDTO)
         {
             var doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id);
+            if (doctor == null)
+            {
+                throw new EntityNotFoundException(nameof(doctor), id);
+            }
 
             doctor.PhoneNumber = doctorDTO.PhoneNumber;
             doctor.FirstName = doctorDTO.FirstName;
