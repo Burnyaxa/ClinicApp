@@ -33,11 +33,11 @@ export class AppointmentService {
     return this.http.delete<any>(`${this.backendUrl}/${appointmentId}`);
   }
 
-  getAppointmentByDoctorId(doctorId: number): Observable<Appointment[]> {
+  getAppointmentsByDoctorId(doctorId: number): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(`${this.backendUrl}?doctorId=${doctorId}`);
   }
 
-  getAppointmentByPatientId(patientId: number): Observable<Appointment[]> {
+  getAppointmentsByPatientId(patientId: number): Observable<Appointment[]> {
     return this.http.get<Appointment[]>(`${this.backendUrl}?patientId=${patientId}`);
   }
 

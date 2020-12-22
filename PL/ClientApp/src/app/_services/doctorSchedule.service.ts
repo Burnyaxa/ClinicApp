@@ -33,7 +33,7 @@ export class DoctorScheduleService {
     return this.http.delete<any>(`${this.backendUrl}/${doctorScheduleId}`);
   }
 
-  getDoctorScheduleByDoctorId(doctorId: number): Observable<DoctorSchedule[]> {
+  getDoctorSchedulesByDoctorId(doctorId: number): Observable<DoctorSchedule[]> {
     return this.http.get<DoctorSchedule[]>(`${this.backendUrl}?doctorId=${doctorId}`);
   }
 
