@@ -1,4 +1,4 @@
-enum AppointmentStatus {
+export enum AppointmentStatus {
   Awaiting,
   Completed,
   Cancelled,

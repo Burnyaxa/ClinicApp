@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DoctorSchedule = void 0;
+exports.DoctorSchedule = exports.Days = void 0;
 var Days;
 (function (Days) {
     Days[Days["Monday"] = 0] = "Monday";
@@ -10,7 +10,7 @@ var Days;
     Days[Days["Friday"] = 4] = "Friday";
     Days[Days["Saturday"] = 5] = "Saturday";
     Days[Days["Sunday"] = 6] = "Sunday";
-})(Days || (Days = {}));
+})(Days = exports.Days || (exports.Days = {}));
 var DoctorSchedule = /** @class */ (function () {
     function DoctorSchedule() {
     }
