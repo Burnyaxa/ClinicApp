@@ -1,6 +1,6 @@
 import { TimeSpan } from "./timespan";
 
-enum Days {
+export enum Days {
   Monday,
   Tuesday,
   Thirsday,
