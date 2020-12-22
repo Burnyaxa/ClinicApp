@@ -46,6 +46,7 @@
     <None Remove="ClientApp\src\app\_services\appointment.service.ts" />
     <None Remove="ClientApp\src\app\_services\doctor.service.ts" />
     <None Remove="ClientApp\src\app\_services\doctorSchedule.service.ts" />
+    <None Remove="ClientApp\src\app\_services\freeTime.service.ts" />
     <None Remove="ClientApp\src\app\_services\patient.service.ts" />
     <None Remove="ClientApp\src\app\_services\visit.service.ts" />
   </ItemGroup>
