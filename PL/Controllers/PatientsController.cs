@@ -49,7 +49,7 @@ namespace PL.Controllers
 
         [HttpPut]
         [Route("{id}")]
-        public async Task<IActionResult> UpdateArticle(int id, [FromBody] PatientUpdateModel model)
+        public async Task<IActionResult> UpdatePatient(int id, [FromBody] PatientUpdateModel model)
         {
             await _patientService.UpdatePatient(id, _mapper.Map<PatientDTO>(model));
             return NoContent();
