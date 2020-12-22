@@ -1,22 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace BLL.DTO
+namespace PL.Models
 {
-    public class DoctorDTO
+    public class DoctorCreateModel
     {
-        public int? Id { get; set; }
+        [Required]
+        public int Id { get; set; }
+        [Required]
         public string LastName { get; set; }
+        [Required]
         public string FirstName { get; set; }
+        [Required]
         public string Patronymic { get; set; }
+        [Required]
         public string Specialty { get; set; }
+        [Required]
         public string Address { get; set; }
+        [Required]
         public string PhoneNumber { get; set; }
+        [Required]
         public int Cabinet { get; set; }
-
-        IEnumerable<VisitDTO> Visits { get; set; }
-        IEnumerable<DoctorScheduleDTO> DoctorSchedules { get; set; }
-        IEnumerable<AppointmentDTO> Appointments { get; set; }
     }
 }
