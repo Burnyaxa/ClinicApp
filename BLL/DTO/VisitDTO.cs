@@ -6,7 +6,7 @@ namespace BLL.DTO
 {
     public class VisitDTO
     {
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public int PatientId { get; set; }
         public int DoctorId { get; set; }
 
