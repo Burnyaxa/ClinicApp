@@ -1,3 +1,4 @@
+import { Appointment } from "./appointment";
 import { DoctorSchedule } from "./doctorSchedule";
 
 export class Doctor {
@@ -11,4 +12,5 @@ export class Doctor {
   cabinet: number;
 
   schedules: DoctorSchedule[];
+  appointments: Appointment[];
 }
