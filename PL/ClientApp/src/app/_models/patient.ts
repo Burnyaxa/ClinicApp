@@ -1,4 +1,5 @@
 import { Appointment } from "./appointment";
+import { Visit } from "./visit";
 
 export class Patient {
   id: number;
@@ -9,4 +10,5 @@ export class Patient {
   phoneNumber: string;
 
   appointments: Appointment[];
+  visits: Visit[];
 }

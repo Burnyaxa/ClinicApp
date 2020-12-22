@@ -41,6 +41,7 @@
     <None Remove="ClientApp\src\app\_models\doctorSchedule.ts" />
     <None Remove="ClientApp\src\app\_models\patient.ts" />
     <None Remove="ClientApp\src\app\_models\timespan.ts" />
+    <None Remove="ClientApp\src\app\_models\visit.ts" />
   </ItemGroup>
 
   <ItemGroup>

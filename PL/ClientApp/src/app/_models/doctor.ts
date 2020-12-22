@@ -1,5 +1,6 @@
 import { Appointment } from "./appointment";
 import { DoctorSchedule } from "./doctorSchedule";
+import { Visit } from "./visit";
 
 export class Doctor {
   id: number;
@@ -13,4 +14,5 @@ export class Doctor {
 
   schedules: DoctorSchedule[];
   appointments: Appointment[];
+  visits: Visit[];
 }
