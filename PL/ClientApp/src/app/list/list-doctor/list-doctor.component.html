@@ -1,0 +1,63 @@
+<h1>Doctors List</h1>
+<input type="button" value="Add" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>Last name</td>
+      <td>First name</td>
+      <td>Patronymic</td>
+      <td>Specialty</td>
+      <td>Address</td>
+      <td>Phone number</td>
+      <td>Cabinet</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of doctors">
+      <ng-template [ngIf]="doctor?.id != d.id" [ngIfElse]="edit">
+        <td>{{d.id}}</td>
+        <td>{{d.lastName}}</td>
+        <td>{{d.firstName}}</td>
+        <td>{{d?.patronymic}}</td>
+        <td>{{d.specialty}}</td>
+        <td>{{d.address}}</td>
+        <td>{{d.phoneNumber}}</td>
+        <td>{{d.cabinet}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editDoctor(d)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(d.id)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="doctor.lastName" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctor.firstName" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctor.patronymic" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctor.specialty" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctor.address" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctor.phoneNumber" class="form-control" />
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="doctor.cabinet" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+  </td>
+</ng-template>

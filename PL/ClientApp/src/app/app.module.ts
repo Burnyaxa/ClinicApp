@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CreateDoctorComponent } from './create/create-doctor/create-doctor.component';
+import { ListDoctorComponent } from './list/list-doctor/list-doctor.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CreateDoctorComponent } from './create/create-doctor/create-doctor.comp
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    CreateDoctorComponent
+    CreateDoctorComponent,
+    ListDoctorComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -31,7 +33,8 @@ import { CreateDoctorComponent } from './create/create-doctor/create-doctor.comp
       { path: '', component: HomeComponent, pathMatch: 'full' },
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
-      { path: 'doctor', component: CreateDoctorComponent},
+      { path: 'doctors', component: ListDoctorComponent },
+      { path: 'create/doctor', component: CreateDoctorComponent},
     ])
   ],
   providers: [],
