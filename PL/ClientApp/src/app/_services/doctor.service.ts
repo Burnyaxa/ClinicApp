@@ -20,7 +20,7 @@ export class DoctorService {
     return this.http.get<Doctor>(`${this.backendUrl}/${id}`);
   }
 
-  createDoctor(lastName: string, firstName: string, patronymic: string, specialty: string, phoneNumber: string, address: string, cabinet: number ): Observable<Doctor> {
+  createDoctor(lastName: string, firstName: string, patronymic: string, specialty: string, phoneNumber: string, address: string, cabinet: number): Observable<Doctor> {
     return this.http.post<Doctor>(this.backendUrl, { lastName, firstName, patronymic, specialty, address, phoneNumber, cabinet });
   }
 

@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\create\create-doctor\create-doctor.component.ts" />
     <None Remove="ClientApp\src\app\_models\appointment.ts" />
     <None Remove="ClientApp\src\app\_models\doctor.ts" />
     <None Remove="ClientApp\src\app\_models\doctorSchedule.ts" />
@@ -87,5 +88,7 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
