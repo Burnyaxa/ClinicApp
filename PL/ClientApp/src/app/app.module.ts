@@ -16,6 +16,8 @@ import { CreatePatientComponent } from './create/create-patient/create-patient.c
 import { ListPatientComponent } from './list/list-patient/list-patient.component';
 import { CreateDoctorScheduleComponent } from './create/create-doctorSchedule/create-doctorSchedule.component';
 import { ListDoctorScheduleComponent } from './list/list-doctorSchedules/list-doctorSchedule.component';
+import { CreateVisitComponent } from './create/create-visit/create-visit.component';
+import { ListVisitComponent } from './list/list-visit/list-visit.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { ListDoctorScheduleComponent } from './list/list-doctorSchedules/list-do
     CreatePatientComponent,
     ListPatientComponent,
     CreateDoctorScheduleComponent,
-    ListDoctorScheduleComponent
+    ListDoctorScheduleComponent,
+    CreateVisitComponent,
+    ListVisitComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -46,7 +50,9 @@ import { ListDoctorScheduleComponent } from './list/list-doctorSchedules/list-do
       { path: 'patients', component: ListPatientComponent },
       { path: 'create/patient', component: CreatePatientComponent },
       { path: 'doctorSchedules', component: ListDoctorScheduleComponent },
-      { path: 'create/doctorSchedule', component: CreateDoctorScheduleComponent},
+      { path: 'create/doctorSchedule', component: CreateDoctorScheduleComponent },
+      { path: 'visits', component: ListVisitComponent },
+      { path: 'create/visit', component: CreateVisitComponent},
     ])
   ],
   providers: [],

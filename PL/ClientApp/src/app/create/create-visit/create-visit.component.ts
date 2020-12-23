@@ -34,7 +34,7 @@ export class CreateVisitComponent implements OnInit, OnDestroy {
       doctorId: ['', Validators.required],
       patientId: ['', Validators.required],
       date: ['', Validators.required],
-      diagosis: [''],
+      diagnosis: [''],
       note: ['']
     });
   }

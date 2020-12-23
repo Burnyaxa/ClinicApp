@@ -12,7 +12,7 @@ namespace PL.Models
         public int PatientId { get; set; }
         [Required]
         public int DoctorId { get; set; }
-
+        [Required]
         public DateTime Date { get; set; }
 
         public string Diagnosis { get; set; }

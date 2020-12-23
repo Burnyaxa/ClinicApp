@@ -22,11 +22,11 @@ export class VisitService {
   }
 
   createVisit(doctorId: number, patientId: number, date: Date, diagnosis: string, note: string): Observable<Visit> {
-    return this.http.post<Visit>(this.backendUrl, { doctorId, patientId, date, diagnosis, note });
+    return this.http.post<Visit>(this.backendUrl, { patientId, doctorId, date, diagnosis, note });
   }
 
   updateVisit(visitId: number, doctorId: number, patientId: number, date: Date, diagnosis: string, note: string): Observable<any> {
-    return this.http.put<any>(`${this.backendUrl}/${visitId}`, { doctorId, patientId, date, status });
+    return this.http.put<any>(`${this.backendUrl}/${visitId}`, { patientId, doctorId, date, status });
   }
 
   deleteVisit(visitId: number): Observable<any> {
