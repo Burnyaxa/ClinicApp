@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DoctorScheduleService } from '../../_services/doctorSchedule.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { DoctorSchedule } from '../../_models/doctorSchedule';
+import { Days, DoctorSchedule } from '../../_models/doctorSchedule';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -44,7 +44,7 @@ export class CreateDoctorScheduleComponent implements OnInit, OnDestroy {
     if (this.doctorScheduleForm.invalid) { return }
 
     this.loading = true;
-    this.doctorScheduleService.createDoctorSchedule(this.f.doctorId.value, this.f.day.value,
+    this.doctorScheduleService.createDoctorSchedule(this.f.doctorId.value, Number(this.f.day.value),
       this.f.startTime.value, this.f.endTime.value)
       .subscribe(
         data => {

@@ -50,7 +50,7 @@ export class CreatePatientComponent implements OnInit, OnDestroy {
       this.f.phoneNumber.value)
       .subscribe(
         data => {
-          this.router.navigateByUrl(`api/patients/${data.id}`);
+          this.router.navigateByUrl(`patients`);
         },
         error => {
           this.error = error;

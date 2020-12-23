@@ -50,7 +50,7 @@ export class CreateVisitComponent implements OnInit, OnDestroy {
       this.f.note.value)
       .subscribe(
         data => {
-          this.router.navigateByUrl(`api/visits/${data.id}`);
+          this.router.navigateByUrl(`visits`);
         },
         error => {
           this.error = error;

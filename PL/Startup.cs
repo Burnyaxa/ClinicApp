@@ -10,6 +10,9 @@ using AutoMapper;
 using BLL.Mapping;
 using PL.Mapping;
 using PL.Middlewares;
+using System.ComponentModel;
+using Newtonsoft.Json;
+using PL.Converters;
 
 namespace PL
 {
@@ -25,7 +28,9 @@ namespace PL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddJsonOptions(
+                options => options.JsonSerializerOptions.Converters.Add(new TimespanCustomConverter()));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {

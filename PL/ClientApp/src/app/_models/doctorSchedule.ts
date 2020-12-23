@@ -13,7 +13,7 @@ export enum Days {
 export class DoctorSchedule {
   id: number;
   doctorId: number;
-  day: Days;
+  day: number;
   startTime: string;
   endTime: string;
 }

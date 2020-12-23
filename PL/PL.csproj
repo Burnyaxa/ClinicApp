@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -57,6 +57,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Remove="ClientApp\src\app\create\create-doctorSchedule\create-doctorSchedule.component.ts" />
+    <TypeScriptCompile Remove="ClientApp\src\app\list\list-doctorSchedules\list-doctorSchedule.component.ts" />
     <TypeScriptCompile Remove="ClientApp\src\app\list\list-patient\list-patient.component.ts" />
   </ItemGroup>
 

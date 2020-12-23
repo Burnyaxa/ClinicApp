@@ -52,7 +52,7 @@ export class CreateDoctorComponent implements OnInit, OnDestroy {
       this.f.phoneNumber.value, this.f.address.value, this.f.cabinet.value)
       .subscribe(
         data => {
-          this.router.navigateByUrl(`api/doctors/${data.id}`);
+          this.router.navigateByUrl(`doctors`);
         },
         error => {
           this.error = error;

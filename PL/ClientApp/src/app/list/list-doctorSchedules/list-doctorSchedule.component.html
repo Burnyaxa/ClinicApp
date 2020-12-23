@@ -1,0 +1,48 @@
+<h1>DoctorSchedules List</h1>
+<input type="button" value="Add" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>DoctorID</td>
+      <td>Day</td>
+      <td>Start time</td>
+      <td>End time</td>
+      <td></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of doctorSchedules">
+      <ng-template [ngIf]="doctorSchedule?.id != d.id" [ngIfElse]="edit">
+        <td>{{d.id}}</td>
+        <td>{{d.doctorId}}</td>
+        <td>{{d.day}}</td>
+        <td>{{d.startTime}}</td>
+        <td>{{d.endTime}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editDoctorSchedule(d)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(d.id)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="doctorSchedule.doctorId" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctorSchedule.day" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctorSchedule.startTime" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="doctorSchedule.endTime" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+  </td>
+</ng-template>
