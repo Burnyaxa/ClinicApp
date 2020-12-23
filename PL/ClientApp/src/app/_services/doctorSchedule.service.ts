@@ -21,11 +21,11 @@ export class DoctorScheduleService {
     return this.http.get<DoctorSchedule>(`${this.backendUrl}/${id}`);
   }
 
-  createDoctorSchedule(doctorId: number, day: Days, startTime: TimeSpan, endTime: TimeSpan): Observable<DoctorSchedule> {
+  createDoctorSchedule(doctorId: number, day: Days, startTime: string, endTime: string): Observable<DoctorSchedule> {
     return this.http.post<DoctorSchedule>(this.backendUrl, { doctorId, day, startTime, endTime });
   }
 
-  updateDoctorSchedule(doctorScheduleId: number, doctorId: number, day: Days, startTime: TimeSpan, endTime: TimeSpan): Observable<any> {
+  updateDoctorSchedule(doctorScheduleId: number, doctorId: number, day: Days, startTime: string, endTime: string): Observable<any> {
     return this.http.put<any>(`${this.backendUrl}/${doctorScheduleId}`, { doctorId, day, startTime, endTime });
   }
 

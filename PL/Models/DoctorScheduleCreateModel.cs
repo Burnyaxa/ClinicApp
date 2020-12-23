@@ -16,8 +16,8 @@ namespace PL.Models
         [Required]
         public Days Day { get; set; }
         [Required]
-        public TimeSpan StartTime { get; set; }
+        public string StartTime { get; set; }
         [Required]
-        public TimeSpan EndTime { get; set; }
+        public string EndTime { get; set; }
     }
 }
