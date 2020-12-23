@@ -40,6 +40,7 @@
     <None Remove="ClientApp\src\app\create\create-patient\create-patient.component.ts" />
     <None Remove="ClientApp\src\app\create\create-visit\create-visit.component.ts" />
     <None Remove="ClientApp\src\app\list\list-doctor\list-doctor.component.ts" />
+    <None Remove="ClientApp\src\app\list\list-visit\list-visit.component.ts" />
     <None Remove="ClientApp\src\app\_models\appointment.ts" />
     <None Remove="ClientApp\src\app\_models\doctor.ts" />
     <None Remove="ClientApp\src\app\_models\doctorSchedule.ts" />
