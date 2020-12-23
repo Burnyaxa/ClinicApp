@@ -1,0 +1,45 @@
+<h1>Appointments List</h1>
+<input type="button" value="Add" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>DoctorID</td>
+      <td>PatientID</td>
+      <td>Date</td>
+      <td>Status</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of appointments">
+      <ng-template [ngIf]="appointment?.id != d.id" [ngIfElse]="edit">
+        <td>{{d.id}}</td>
+        <td>{{d.doctorId}}</td>
+        <td>{{d.patientId}}</td>
+        <td>{{d.date}}</td>
+        <td>{{d.status}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editAppointment(d)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(d.id)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #edit>
+  <td>
+    <input type="number" [(ngModel)]="appointment.doctorId" class="form-control" />
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="appointment.patientId" class="form-control" />
+  </td>
+  <td>
+    <input type="datetime-local" [(ngModel)]="appointment.date" class="form-control" />
+  </td>
+  <td>
+    <input type="number" [(ngModel)]="appointment.status" class="form-control" />
+  </td>
+    <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+</ng-template>

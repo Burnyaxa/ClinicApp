@@ -21,11 +21,11 @@ export class AppointmentService {
     return this.http.get<Appointment>(`${this.backendUrl}/${id}`);
   }
 
-  createAppointment(doctorId: number, patientId: number, date: Date, status: AppointmentStatus): Observable<Appointment> {
+  createAppointment(doctorId: number, patientId: number, date: Date, status: number): Observable<Appointment> {
     return this.http.post<Appointment>(this.backendUrl, { doctorId, patientId, date, status });
   }
 
-  updateAppointment(appointmentId: number, doctorId: number, patientId: number, date: Date, status: AppointmentStatus): Observable<any> {
+  updateAppointment(appointmentId: number, doctorId: number, patientId: number, date: Date, status: number): Observable<any> {
     return this.http.put<any>(`${this.backendUrl}/${appointmentId}`, { doctorId, patientId, date, status });
   }
 

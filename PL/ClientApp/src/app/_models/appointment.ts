@@ -10,5 +10,5 @@ export class Appointment {
   doctorId: number;
   patientId: number;
   date: Date;
-  status: AppointmentStatus = AppointmentStatus.Awaiting;
+  status: number;
 }
