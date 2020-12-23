@@ -10,7 +10,6 @@ var AppointmentStatus;
 })(AppointmentStatus = exports.AppointmentStatus || (exports.AppointmentStatus = {}));
 var Appointment = /** @class */ (function () {
     function Appointment() {
-        this.status = AppointmentStatus.Awaiting;
     }
     return Appointment;
 }());

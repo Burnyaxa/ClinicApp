@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Linq;
 namespace BLL.Services
 {
     public class DoctorService : IDoctorService
@@ -50,6 +50,17 @@ namespace BLL.Services
                 throw new EntityNotFoundException(nameof(doctors), 0);
             }
             return _mapper.Map<IEnumerable<Doctor>, IEnumerable<DoctorDTO>>(doctors);
+        }
+
+        public async Task<IEnumerable<DoctorDTO>> GetAllDoctorsBySpecialty(string specialty)
+        {
+            var doctors = await _unitOfWork.DoctorRepository.GetAllAsync();
+            if(doctors == null)
+            {
+                throw new EntityNotFoundException(nameof(doctors), 0);
+            }
+            var doctorsDTO = _mapper.Map<IEnumerable<Doctor>, IEnumerable<DoctorDTO>> (doctors);
+            return doctorsDTO.Where(x => x.Specialty == specialty);
         }
 
         public async Task<DoctorDTO> GetDoctorById(int id)

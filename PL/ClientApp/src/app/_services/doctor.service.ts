@@ -16,6 +16,10 @@ export class DoctorService {
     return this.http.get<Doctor[]>(this.backendUrl);
   }
 
+  getDoctorsBySpecialty(specialty: string): Observable<Doctor[]> {
+    return this.http.get<Doctor[]>(`${this.backendUrl}?specialty=${specialty}`);
+  }
+
   getDoctor(id: number): Observable<Doctor> {
     return this.http.get<Doctor>(`${this.backendUrl}/${id}`);
   }
