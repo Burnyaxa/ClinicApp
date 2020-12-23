@@ -1,0 +1,46 @@
+<div class="col-lg-auto">
+  <div class=" card">
+    <h4 class="card-header">Create visit</h4>
+    <div class="card-body">
+      <form [formGroup]="visitForm">
+        <div class="form-group">
+          <label for="doctorId">Doctor ID</label>
+          <input type="number" formControlName="doctorId" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && f.doctorId.errors}" />
+          <div *ngIf="submitted && f.doctorId.errors" class="invalid-feedback">
+            <div *ngIf="f.doctorId.errors.required">Doctor ID is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="patientId">Patient ID</label>
+          <input type="text" formControlName="patientId" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && f.patientId.errors}" />
+          <div *ngIf="submitted && f.patientId.errors" class="invalid-feedback">
+            <div *ngIf="f.patientId.errors.required">Patient ID is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="datetime" formControlName="date" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && f.date.errors}" />
+          <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+            <div *ngIf="f.date.errors.required">Date is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="diagnosis">Diagnosis</label>
+          <input type="text" formControlName="diagnosis" class="form-control" />
+        </div>
+        <div class="form-group">
+          <label for="note">Note</label>
+          <input type="text" formControlName="note" class="form-control" />
+        </div>
+        <button type="submit" (click)="OnSubmit()" [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Create
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+    </div>
+  </div>
+</div>
