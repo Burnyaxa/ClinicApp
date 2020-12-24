@@ -34,7 +34,7 @@ export class DoctorScheduleService {
   }
 
   getDoctorSchedulesByDoctorId(doctorId: number): Observable<DoctorSchedule[]> {
-    return this.http.get<DoctorSchedule[]>(`${this.backendUrl}?doctorId=${doctorId}`);
+    return this.http.get<DoctorSchedule[]>(`${this.backendUrl}/doctor/${doctorId}`);
   }
 
   searchDoctorSchedules(url: string): Observable<DoctorSchedule[]> {

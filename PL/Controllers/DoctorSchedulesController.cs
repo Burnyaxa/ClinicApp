@@ -64,7 +64,7 @@ namespace PL.Controllers
         }
 
         [HttpGet]
-        [Route("{doctorId}")]
+        [Route("doctor/{doctorId}")]
         public async Task<IActionResult> GetAllDoctorScheduleeByDoctorId(int doctorId)
         {
             return Ok(await _doctorScheduleService.GetAllDoctorSchedulesByDoctorId(doctorId));

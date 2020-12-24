@@ -26,7 +26,7 @@ export class VisitService {
   }
 
   updateVisit(visitId: number, doctorId: number, patientId: number, date: Date, diagnosis: string, note: string): Observable<any> {
-    return this.http.put<any>(`${this.backendUrl}/${visitId}`, { patientId, doctorId, date, status });
+    return this.http.put<any>(`${this.backendUrl}/${visitId}`, { patientId, doctorId, date, diagnosis, note });
   }
 
   deleteVisit(visitId: number): Observable<any> {
@@ -34,11 +34,11 @@ export class VisitService {
   }
 
   getVisitsByDoctorId(doctorId: number): Observable<Visit[]> {
-    return this.http.get<Visit[]>(`${this.backendUrl}?doctorId=${doctorId}`);
+    return this.http.get<Visit[]>(`${this.backendUrl}/doctor/${doctorId}`);
   }
 
   getVisitsByPatientId(patientId: number): Observable<Visit[]> {
-    return this.http.get<Visit[]>(`${this.backendUrl}?patientId=${patientId}`);
+    return this.http.get<Visit[]>(`${this.backendUrl}/patient/${patientId}`);
   }
 
   searchVisits(url: string): Observable<Visit[]> {

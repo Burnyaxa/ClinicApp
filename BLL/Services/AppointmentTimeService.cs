@@ -49,7 +49,7 @@ namespace BLL.Services
                 {
                     freeTime.Add(current);
                 }
-                else if(appointments.All(x => x.Date.Hour != current.Hours && x.Date.Minute != current.Minutes))
+                else if(!appointments.Any(x => x.Date.Hour == current.Hours && x.Date.Minute == current.Minutes))
                 {
                     freeTime.Add(current);
                 }

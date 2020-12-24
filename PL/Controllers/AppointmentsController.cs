@@ -62,14 +62,14 @@ namespace PL.Controllers
             await _appointmentService.DeleteAppointment(id);
             return NoContent();
         }
-        [Route("{patientId}")]
+        [Route("patient/{patientId}")]
         [HttpGet]
         public async Task<IActionResult> GetAllAppointmentsByDoctorId(int doctorId)
         {
             return Ok(await _appointmentService.GetAllAppointmentsByDoctorId(doctorId));
         }
 
-        [Route("{doctorId}")]
+        [Route("doctor/{doctorId}")]
         [HttpGet]
         public async Task<IActionResult> GetAllAppointmentsByPatientId(int patientId)
         {

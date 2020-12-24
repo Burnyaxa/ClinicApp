@@ -34,11 +34,11 @@ export class AppointmentService {
   }
 
   getAppointmentsByDoctorId(doctorId: number): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.backendUrl}?doctorId=${doctorId}`);
+    return this.http.get<Appointment[]>(`${this.backendUrl}/doctor/${doctorId}`);
   }
 
   getAppointmentsByPatientId(patientId: number): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>(`${this.backendUrl}?patientId=${patientId}`);
+    return this.http.get<Appointment[]>(`${this.backendUrl}/patient/${patientId}`);
   }
 
   searchAppointments(url: string): Observable<Appointment[]> {
