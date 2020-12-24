@@ -17,7 +17,7 @@ export class DoctorService {
   }
 
   getDoctorsBySpecialty(specialty: string): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${this.backendUrl}?specialty=${specialty}`);
+    return this.http.get<Doctor[]>(`${this.backendUrl}/specialty/${specialty}`);
   }
 
   getDoctor(id: number): Observable<Doctor> {

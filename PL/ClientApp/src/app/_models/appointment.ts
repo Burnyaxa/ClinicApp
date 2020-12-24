@@ -1,9 +1,8 @@
-export enum AppointmentStatus {
-  Awaiting,
-  Completed,
-  Cancelled,
-  Delayed,
-}
+export const AppointmentStatus: string[] = [
+  "Awaiting",
+  "Completed",
+  "Cancelled",
+  "Delayed"];
 
 export class Appointment {
   id: number;

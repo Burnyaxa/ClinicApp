@@ -31,7 +31,7 @@ namespace PL.Controllers
         }
 
         [HttpGet]
-        [Route("{specialty}")]
+        [Route("specialty/{specialty}")]
         public async Task<IActionResult> GetAllDoctorsBySpecialty(string specialty)
         {
             return Ok(await _doctorService.GetAllDoctorsBySpecialty(specialty));

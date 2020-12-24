@@ -16,7 +16,7 @@
       <ng-template [ngIf]="doctorSchedule?.id != d.id" [ngIfElse]="edit">
         <td>{{d.id}}</td>
         <td>{{d.doctorId}}</td>
-        <td>{{d.day}}</td>
+        <td>{{days[d.day]}}</td>
         <td>{{d.startTime}}</td>
         <td>{{d.endTime}}</td>
         <td>

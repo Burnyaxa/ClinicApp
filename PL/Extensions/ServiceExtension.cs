@@ -25,6 +25,7 @@ namespace PL.Extensions
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<IVisitService, VisitService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ISpecialtyService, SpecialtyService>();
             services.AddScoped<ExceptionHandlerMiddleware>();
         }
 

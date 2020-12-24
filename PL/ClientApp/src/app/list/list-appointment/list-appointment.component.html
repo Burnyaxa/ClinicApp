@@ -16,8 +16,8 @@
         <td>{{d.id}}</td>
         <td>{{d.doctorId}}</td>
         <td>{{d.patientId}}</td>
-        <td>{{d.date}}</td>
-        <td>{{d.status}}</td>
+        <td>{{d.date | date:'dd.MM.yy HH:mm'}}</td>
+        <td>{{appointmentStatus[d.status]}}</td>
         <td>
           <button class="btn btn-sm btn-primary" (click)="editAppointment(d)">Edit</button>
           <button class="btn btn-sm btn-danger" (click)="delete(d.id)">Delete</button>

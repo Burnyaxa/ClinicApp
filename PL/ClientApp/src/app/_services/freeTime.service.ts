@@ -8,11 +8,11 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class FreeTimeService {
-  private backendUrl = `${environment.url}/freeTimes`
+  private backendUrl = `${environment.url}/freeTime`
 
   constructor(private http: HttpClient) { }
 
-  getFreeTimeByDateAndDoctorId(doctorId: number, date: Date): Observable<FreeTime> {
+  getFreeTimeByDateAndDoctorId(doctorId: number, date: string): Observable<FreeTime> {
     return this.http.get<FreeTime>(`${this.backendUrl}?date=${date}&doctorId=${doctorId}`);
   }
 }

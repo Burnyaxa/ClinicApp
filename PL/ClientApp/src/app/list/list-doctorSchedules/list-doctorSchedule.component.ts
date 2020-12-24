@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DoctorScheduleService } from '../../_services/doctorSchedule.service';
-import { DoctorSchedule } from '../../_models/doctorSchedule';
+import { DoctorSchedule, Days } from '../../_models/doctorSchedule';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-doctorSchedule',
@@ -11,6 +11,7 @@ export class ListDoctorScheduleComponent implements OnInit {
 
   doctorSchedule: DoctorSchedule = new DoctorSchedule();
   doctorSchedules: DoctorSchedule[];
+  days = Days;
   tableMode: boolean = true;
 
   constructor(private doctorScheduleService: DoctorScheduleService, private router: Router) { }

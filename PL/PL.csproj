@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\create\create-appointment\create-appointment.component.ts" />
     <None Remove="ClientApp\src\app\create\create-doctor\create-doctor.component.ts" />
     <None Remove="ClientApp\src\app\create\create-patient\create-patient.component.ts" />
     <None Remove="ClientApp\src\app\create\create-visit\create-visit.component.ts" />
@@ -47,6 +48,7 @@
     <None Remove="ClientApp\src\app\_models\doctorSchedule.ts" />
     <None Remove="ClientApp\src\app\_models\freeTime.ts" />
     <None Remove="ClientApp\src\app\_models\patient.ts" />
+    <None Remove="ClientApp\src\app\_models\specialty.ts" />
     <None Remove="ClientApp\src\app\_models\timespan.ts" />
     <None Remove="ClientApp\src\app\_models\visit.ts" />
     <None Remove="ClientApp\src\app\_services\appointment.service.ts" />
@@ -54,6 +56,7 @@
     <None Remove="ClientApp\src\app\_services\doctorSchedule.service.ts" />
     <None Remove="ClientApp\src\app\_services\freeTime.service.ts" />
     <None Remove="ClientApp\src\app\_services\patient.service.ts" />
+    <None Remove="ClientApp\src\app\_services\specialty.service.ts" />
     <None Remove="ClientApp\src\app\_services\visit.service.ts" />
   </ItemGroup>
 

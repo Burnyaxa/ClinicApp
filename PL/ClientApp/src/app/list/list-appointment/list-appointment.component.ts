@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AppointmentService } from '../../_services/appointment.service';
-import { Appointment } from '../../_models/appointment';
+import { Appointment, AppointmentStatus } from '../../_models/appointment';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-appointment',
@@ -11,6 +11,7 @@ export class ListAppointmentComponent implements OnInit {
 
   appointment: Appointment = new Appointment();
   appointments: Appointment[];
+  appointmentStatus = AppointmentStatus;
   tableMode: boolean = true;
 
   constructor(private appointmentService: AppointmentService, private router: Router) { }
@@ -26,12 +27,12 @@ export class ListAppointmentComponent implements OnInit {
 
   save() {
     if (this.appointment.id == null) {
-      this.appointmentService.createAppointment(this.appointment.doctorId, this.appointment.patientId, this.appointment.date,
+      this.appointmentService.createAppointment(this.appointment.doctorId, this.appointment.patientId, this.appointment.date.toISOString(),
         this.appointment.status)
         .subscribe((data: Appointment) => this.appointments.push(data));
     } else {
       this.appointmentService.updateAppointment(this.appointment.id, this.appointment.doctorId, this.appointment.patientId,
-        this.appointment.date, this.appointment.status)
+        this.appointment.date.toISOString(), this.appointment.status)
         .subscribe(data => this.loadAppointments());
     }
     this.cancel();
