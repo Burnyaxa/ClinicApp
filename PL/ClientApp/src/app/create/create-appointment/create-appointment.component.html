@@ -1,0 +1,57 @@
+<div class="col-lg-auto">
+  <div class=" card">
+    <h4 class="card-header">Create appointment</h4>
+    <div class="card-body">
+      <form [formGroup]="appointmentForm">
+        <div class="form-group">
+          <label for="patientId">Patient ID</label>
+          <input type="number" formControlName="patientId" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && f.patientId.errors}" />
+          <div *ngIf="submitted && f.patientId.errors" class="invalid-feedback">
+            <div *ngIf="f.patientId.errors.required">PatientID is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="specialty">Specialty</label>
+          <select formControlName="specialty" class="form-control" size="7" [ngClass]="{'is-invalid': submitted && f.specialty.errors}" (change)="OnGetDoctors($event.target.value)">
+          <option *ngFor="let str of specialties.specialties" value="{{str}}">{{str}} </option>
+          </select>
+          <div *ngIf="submitted && f.specialty.errors" class="invalid-feedback">
+            <div *ngIf="f.specialty.errors.required">Specialty is required</div>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="isHavingSpecialties">
+          <label for="doctorId">Doctor</label>
+          <select formControlName="doctorId" class="form-control" size="7" (change)="OnDoctorSelected($event.target.value)" [ngClass]="{'is-invalid': submitted && f.doctorId.errors}">
+            <option *ngFor="let str of doctors" value="{{str.id}}">{{str.lastName}} {{str.firstName}} </option>
+          </select>
+          <div *ngIf="submitted && f.doctorId.errors" class="invalid-feedback">
+            <div *ngIf="f.doctorId.errors.required">Doctor is required</div>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="isHavingSpecialties && isHavingDoctors">
+          <label for="date">Date</label>
+          <input type="date" formControlName="date" class="form-control"
+                 [ngClass]="{'is-invalid': submitted && f.date.errors}"  (change)="OnGetFreeTime($event.target.value)"/>
+          <div *ngIf="submitted && f.date.errors" class="invalid-feedback">
+            <div *ngIf="f.date.errors.required">Date is required</div>
+          </div>
+        </div>
+        <div class="form-group" *ngIf="isHavingSpecialties && isHavingDoctors && isHavingTime">
+          <label for="time">Time</label>
+          <select formControlName="time" class="form-control" size="7"  [ngClass]="{'is-invalid': submitted && f.time.errors}">
+            <option *ngFor="let str of freeTime" value="{{str}}">{{str}}</option>
+          </select>
+          <div *ngIf="submitted && f.time.errors" class="invalid-feedback">
+            <div *ngIf="f.time.errors.required">Time is required</div>
+          </div>
+        </div>
+        <button type="submit" (click)="OnSubmit()" [disabled]="loading" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Create
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+    </div>
+  </div>
+</div>

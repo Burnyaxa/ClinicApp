@@ -62,13 +62,13 @@ namespace PL.Controllers
             await _visitService.DeleteVisit(id);
             return NoContent();
         }
-
+        [Route("doctor/{doctorId}")]
         [HttpGet]
         public async Task<IActionResult> GetAllVisitsByDoctorId(int doctorId)
         {
             return Ok(await _visitService.GetAllVisitsByDoctorId(doctorId));
         }
-
+        [Route("patient/{patientId}")]
         [HttpGet]
         public async Task<IActionResult> GetAllVisitsByPatientId(int patientId)
         {

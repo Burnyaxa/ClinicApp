@@ -1,0 +1,52 @@
+<h1>Visits List</h1>
+<input type="button" value="Add" class="btn btn-default" (click)="add()" />
+<table *ngIf="tableMode; else create" class="table table-striped">
+  <thead>
+    <tr>
+      <td>ID</td>
+      <td>DoctorID</td>
+      <td>PatientID</td>
+      <td>Date</td>
+      <td>Diagnosis</td>
+      <td>Note</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let d of visits">
+      <ng-template [ngIf]="visit?.id != d.id" [ngIfElse]="edit">
+        <td>{{d.id}}</td>
+        <td>{{d.doctorId}}</td>
+        <td>{{d.patientId}}</td>
+        <td>{{d.date}}</td>
+        <td>{{d.diagnosis}}</td>
+        <td>{{d.note}}</td>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="editVisit(d)">Edit</button>
+          <button class="btn btn-sm btn-danger" (click)="delete(d.id)">Delete</button>
+        </td>
+      </ng-template>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #edit>
+  <td>
+    <input type="text" [(ngModel)]="visit.doctorId" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="visit.patientId" class="form-control" />
+  </td>
+  <td>
+    <input type="datetime-local" [(ngModel)]="visit.date" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="visit.diagnosis" class="form-control" />
+  </td>
+  <td>
+    <input type="text" [(ngModel)]="visit.note" class="form-control" />
+  </td>
+  <td>
+    <input type="button" value="Save" (click)="save()" class="btn btn-sm btn-success" />
+    <input type="button" value="Cancel" (click)="cancel()" class="btn btn-sm btn-warning" />
+  </td>
+</ng-template>

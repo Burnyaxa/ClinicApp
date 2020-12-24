@@ -19,8 +19,40 @@ namespace PL.Mapping
             CreateMap<DoctorUpdateModel, DoctorDTO>();
             CreateMap<VisitCreateModel, VisitDTO>();
             CreateMap<VisitUpdateModel, VisitDTO>();
-            CreateMap<DoctorScheduleCreateModel, DoctorScheduleDTO>();
-            CreateMap<DoctorScheduleUpdateModel, DoctorScheduleDTO>();
+            CreateMap<DoctorScheduleCreateModel, DoctorScheduleDTO>()
+                .ForMember(dto => dto.StartTime,
+                opt => opt.MapFrom(
+                    model => TimeSpan.FromHours(
+                        Convert.ToInt32(
+                    model.StartTime.Split(':', StringSplitOptions.None)[0]))
+                .Add(TimeSpan.FromMinutes(
+                    Convert.ToInt32(
+                        model.StartTime.Split(':', StringSplitOptions.None)[1])))))
+                .ForMember(dto => dto.EndTime,
+                opt => opt.MapFrom(
+                    model => TimeSpan.FromHours(
+                        Convert.ToInt32(
+                    model.EndTime.Split(':', StringSplitOptions.None)[0]))
+                .Add(TimeSpan.FromMinutes(
+                    Convert.ToInt32(
+                        model.EndTime.Split(':', StringSplitOptions.None)[1])))));
+            CreateMap<DoctorScheduleUpdateModel, DoctorScheduleDTO>()
+                 .ForMember(dto => dto.StartTime,
+                opt => opt.MapFrom(
+                    model => TimeSpan.FromHours(
+                        Convert.ToInt32(
+                    model.StartTime.Split(':', StringSplitOptions.None)[0]))
+                .Add(TimeSpan.FromMinutes(
+                    Convert.ToInt32(
+                        model.StartTime.Split(':', StringSplitOptions.None)[1])))))
+                .ForMember(dto => dto.EndTime,
+                opt => opt.MapFrom(
+                    model => TimeSpan.FromHours(
+                        Convert.ToInt32(
+                    model.EndTime.Split(':', StringSplitOptions.None)[0]))
+                .Add(TimeSpan.FromMinutes(
+                    Convert.ToInt32(
+                        model.EndTime.Split(':', StringSplitOptions.None)[1])))));
             CreateMap<AppointmentCreateModel, AppointmentDTO>();
             CreateMap<AppointmentUpdateModel, AppointmentDTO>();
             CreateMap<AppointmentFreeTimeModel, AppointmentDTO>();

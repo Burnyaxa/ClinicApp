@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using PL.Middlewares;
 
 namespace PL.Extensions
 {
@@ -24,6 +25,8 @@ namespace PL.Extensions
             services.AddScoped<IPatientService, PatientService>();
             services.AddScoped<IVisitService, VisitService>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<ISpecialtyService, SpecialtyService>();
+            services.AddScoped<ExceptionHandlerMiddleware>();
         }
 
         public static void AddClinicDb(this IServiceCollection services, string connectionString)

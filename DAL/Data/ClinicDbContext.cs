@@ -14,9 +14,13 @@ namespace DAL.Data
         public DbSet<DoctorSchedule> DoctorSchedules { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
 
-        public ClinicDbContext() : base() { }
+        public ClinicDbContext() : base() {
+            Database.EnsureCreated();
+        }
 
-        public ClinicDbContext(DbContextOptions<ClinicDbContext> options) : base(options) { }
+        public ClinicDbContext(DbContextOptions<ClinicDbContext> options) : base(options) {
+            Database.EnsureCreated();
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

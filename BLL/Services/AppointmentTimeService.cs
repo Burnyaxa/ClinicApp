@@ -27,25 +27,29 @@ namespace BLL.Services
         public async Task<AppointmentFreeTimeDTO> GetFreeHours(DateTime date, int id)
         {
             List<TimeSpan> freeTime = new List<TimeSpan>();
-            Doctor doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id);
+            Doctor doctor = await _unitOfWork.DoctorRepository.GetByIdAsync(id, "Schedules,Appointments");
             if(doctor == null)
             {
                 throw new EntityNotFoundException(nameof(doctor), id);
             }
             IEnumerable<DoctorScheduleDTO> doctorSchedulesDTO = _mapper.Map<IEnumerable<DoctorSchedule>, IEnumerable<DoctorScheduleDTO>>(doctor.Schedules);
             IEnumerable<AppointmentDTO> appointmentsDTO = _mapper.Map<IEnumerable<Appointment>, IEnumerable<AppointmentDTO>>(doctor.Appointments);
-
-            string day = date.ToString("dddd");
+            string day = date.DayOfWeek.ToString();
 
             DoctorScheduleDTO doctorSchedule = doctorSchedulesDTO.Where(x => x.Day.ToString() == day).FirstOrDefault();
-            IEnumerable<AppointmentDTO> appointments = appointmentsDTO.Where(x =>
-                x.Date.ToString("dd.MM.yyyy") ==
-                date.ToString("dd.MM.yyyy") &&
-                x.Status == AppointmentStatus.Awaiting);
-
+            if(doctorSchedule == null)
+            {
+                throw new EntityNotFoundException(nameof(doctorSchedule), id);
+            }
+            var appointments = appointmentsDTO.Where(x => (x.Date.Year == date.Year) && (x.Date.Month == date.Month) && (x.Date.Day == date.Day));
+            
             for(TimeSpan current = doctorSchedule.StartTime; current < doctorSchedule.EndTime.Subtract(_appointmentDuration); current = current.Add(_appointmentDuration))
             {
-                if(appointments.All(x => x.Date.ToString("h") != current.Hours.ToString() && x.Date.ToString("m") != current.Minutes.ToString()))
+                if(appointments == null)
+                {
+                    freeTime.Add(current);
+                }
+                else if(!appointments.Any(x => x.Date.Hour == current.Hours && x.Date.Minute == current.Minutes))
                 {
                     freeTime.Add(current);
                 }

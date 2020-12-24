@@ -14,7 +14,7 @@ namespace PL.Models
         public string LastName { get; set; }
         [Required]
         public string FirstName { get; set; }
-        [Required]
+
         public string Patronymic { get; set; }
         [Required]
         public string Specialty { get; set; }

@@ -26,7 +26,5 @@ namespace DAL.Interfaces
         Task<TEntity> FirstOrDefaultAsync(int id, string includeProperties = "");
         Task<TEntity> FirstOrDefaultAsync(Expression<Func<TEntity, bool>> predicate, string includeProperties = "");
         TEntity FirstOrDefault(Expression<Func<TEntity, bool>> predicate, string includeProperties = "");
-        void Save();
-        Task SaveAsync();
     }
 }

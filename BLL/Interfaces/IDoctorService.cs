@@ -9,6 +9,7 @@ namespace BLL.Interfaces
     public interface IDoctorService
     {
         Task<IEnumerable<DoctorDTO>> GetAllDoctors();
+        Task<IEnumerable<DoctorDTO>> GetAllDoctorsBySpecialty(string specialty);
         Task<DoctorDTO> GetDoctorById(int id);
         Task<DoctorDTO> CreateDoctor(DoctorDTO doctor);
         Task<DoctorDTO> UpdateDoctor(int id, DoctorDTO doctor);

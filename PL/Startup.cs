@@ -10,6 +10,9 @@ using AutoMapper;
 using BLL.Mapping;
 using PL.Mapping;
 using PL.Middlewares;
+using System.ComponentModel;
+using Newtonsoft.Json;
+using PL.Converters;
 
 namespace PL
 {
@@ -25,13 +28,23 @@ namespace PL
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews()
+                .AddJsonOptions(
+                options => options.JsonSerializerOptions.Converters.Add(new TimespanCustomConverter()));
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            services.AddCors();
+            services.AddCors(options =>
+            {
+                options.AddPolicy(
+                  "CorsPolicy",
+                  builder => builder.WithOrigins("http://localhost:4200")
+                  .AllowAnyMethod()
+                  .AllowAnyHeader()
+                  .AllowCredentials());
+            });
             services.AddClinicDb(Configuration.GetConnectionString("DefaultConnection"));
             services.Inject();
             services.AddAutoMapper(typeof(MappingProfile), typeof(AppMappingProfile));
@@ -50,18 +63,13 @@ namespace PL
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            app.UseCors("CorsPolicy");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!env.IsDevelopment())
             {
                 app.UseSpaStaticFiles();
             }
-
-            app.UseCors(x => x
-                .AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader());
 
             app.UseExceptionHandlerMiddleware();
             app.UseRouting();
