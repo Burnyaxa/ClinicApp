@@ -14,9 +14,9 @@ namespace PL.Models
         public int DoctorId { get; set; }
         [Required]
         public DateTime Date { get; set; }
-        [Required]
+
         public string Diagnosis { get; set; }
-        [Required]
+
         public string Note { get; set; }
     }
 }
