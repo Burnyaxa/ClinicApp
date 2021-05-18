@@ -16,7 +16,7 @@ namespace Clinic.Tests
 {
     public class DoctorTests
     {
-        private const string path = "https://addaa8150243.ngrok.io/api/";
+        private const string path = "https://clinicpl.azurewebsites.net/api/";
         private DoctorCreateModel _initialDoctor;
         private DoctorUpdateModel _updateDoctor;
         private RestClient _client;
