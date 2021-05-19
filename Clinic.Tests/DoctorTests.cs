@@ -219,7 +219,7 @@ namespace Clinic.Tests
             var getResponse = _client.Execute(getByIdRequest);
 
             //assert
-            Assert.AreEqual(1,2);
+            Assert.AreEqual("John","Ivan");
         }
 
     }
